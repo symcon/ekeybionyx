@@ -1,0 +1,18 @@
+{
+    "id": "{12581FD4-FA80-AE58-7EF7-74733949B98B}",
+    "name": "eKey Cloud",
+    "type": 2,
+    "vendor": "eKey",
+    "aliases": [
+        "eKey bionyx Cloud"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [
+        "{0E38754F-EDB9-153E-A9FA-C6C8E6F41957}"
+    ],
+    "implemented": [
+        "{419A845D-6534-1724-989C-948EB2366D38}"
+    ],
+    "url": "https://www.symcon.de",
+    "prefix": "EKEY"
+}

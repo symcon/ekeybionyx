@@ -1,0 +1,12 @@
+{
+    "translations": {
+        "de": {
+            "Host": "Host",
+            "Gateway PIN": "Gateway PIN",
+            "Login": "Einloggen",
+            "Please use your Somfy Account to log in!": "Bitte benutzen Sie Ihren Somfy Account zum Einloggen!",
+            "Username": "Benutzername",
+            "Password": "Kennwort"
+        }
+    }
+}

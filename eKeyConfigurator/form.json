@@ -1,0 +1,32 @@
+{
+    "actions": [
+        {
+            "type": "Configurator",
+            "name": "Configurator",
+            "caption": "Systems",
+            "delete": false,
+            "columns": [
+                {
+                    "label": "ID",
+                    "name": "systemId",
+                    "width": "350px"
+                },
+                {
+                    "label": "Name",
+                    "name": "systemName",
+                    "width": "auto"
+                },
+                {
+                    "caption": "Information",
+                    "name": "info",
+                    "width": "250px"
+                }
+            ],
+            "sort": {
+                "column": "systemName",
+                "direction": "ascending"
+            },
+            "values": []
+        }
+    ]
+}

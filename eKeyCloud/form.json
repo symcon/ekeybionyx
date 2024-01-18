@@ -1,0 +1,43 @@
+{
+    "elements": [
+        {
+            "type": "RowLayout",
+            "items": [
+                {
+                    "type": "Select",
+                    "caption": "Connection",
+                    "name": "Connection",
+                    "options": [
+                        {
+                            "caption": "Local",
+                            "value": "local"
+                        },
+                        {
+                            "caption": "Connect",
+                            "value": "connect"
+                        }
+                    ],
+                    "onChange": "EKEY_UIUpdateConnection($id, $Connection);"
+                },
+                {
+                    "type": "Select",
+                    "caption": "IP-Address",
+                    "name": "IP",
+                    "options": [
+                    ]
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Button",
+            "label": "Register",
+            "onClick": "echo EKEY_Register($id);"
+        },
+        {
+            "type": "Label",
+            "name": "Token"
+        }
+    ]
+}

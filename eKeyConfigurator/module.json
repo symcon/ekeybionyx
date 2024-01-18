@@ -1,0 +1,18 @@
+{
+    "id": "{46E66F3B-494C-2075-46B9-EF21B113DAA4}",
+    "name": "eKey Configurator",
+    "type": 4,
+    "vendor": "eKey",
+    "aliases": [
+        "eKey bionyx Configurator"
+    ],
+    "parentRequirements": [
+        "{419A845D-6534-1724-989C-948EB2366D38}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{0E38754F-EDB9-153E-A9FA-C6C8E6F41957}"
+    ],
+    "url": "https://www.symcon.de",
+    "prefix": "EKEY"
+}

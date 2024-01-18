@@ -1,0 +1,18 @@
+{
+    "id": "{81DE9D16-04F1-DE04-AC2D-77096E0A405A}",
+    "name": "eKey System",
+    "type": 3,
+    "vendor": "eKey",
+    "aliases": [
+        "eKey bionyx System"
+    ],
+    "parentRequirements": [
+        "{419A845D-6534-1724-989C-948EB2366D38}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{0E38754F-EDB9-153E-A9FA-C6C8E6F41957}"
+    ],
+    "url": "https://www.symcon.de",
+    "prefix": "EKEY"
+}

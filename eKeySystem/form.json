@@ -1,0 +1,71 @@
+{
+    "elements": [
+        {
+            "type": "ValidationTextBox",
+            "name": "SystemId",
+            "caption": "ID"
+        }
+    ],
+    "actions": [
+        {
+            "type": "List",
+            "name": "FunctionWebHooks",
+            "caption": "Function WebHooks",
+            "delete": true,
+            "add": true,
+            "onAdd": "EKEY_AddFunctionWebHook($id, $FunctionWebHooks['functionName'], $FunctionWebHooks['locationName'], $FunctionWebHooks['functionAction']);",
+            "onEdit": "EKEY_EditFunctionWebHook($id, $FunctionWebHooks['functionWebhookId'], $FunctionWebHooks['functionName'], $FunctionWebHooks['locationName'], $FunctionWebHooks['functionAction']);",
+            "onDelete": "EKEY_DeleteFunctionWebHook($id, $FunctionWebHooks['functionWebhookId']);",
+            "columns": [
+                {
+                    "label": "ID",
+                    "name": "functionWebhookId",
+                    "width": "350px",
+                    "add": ""
+                },
+                {
+                    "label": "Function",
+                    "name": "functionName",
+                    "width": "auto",
+                    "add": "Open"
+                },
+                {
+                    "caption": "Location",
+                    "name": "locationName",
+                    "width": "250px",
+                    "add": "Garage"
+                },
+                {
+                    "name": "functionAction",
+                    "add": "",
+                    "visible": false,
+                    "save": true
+                }
+            ],
+            "form": [
+                {
+                    "type": "ValidationTextBox",
+                    "name": "functionName",
+                    "caption": "Function name, which will be shown in eKey Bionxy App",
+                    "validate": "^(?![\\d\\s])[\\w\\p{P}\\u0020]*[\\w\\p{P}]$"
+                },
+                {
+                    "type": "ValidationTextBox",
+                    "name": "locationName",
+                    "caption": "Location name, which will be shown in eKey Bionxy App",
+                    "validate": "^(?![\\d\\s])[\\w\\p{P}\\u0020]*[\\w\\p{P}]$"
+                },
+                {
+                    "type": "SelectAction",
+                    "name": "functionAction",
+                    "caption": "Select action which will be associated with this webhook"
+                }
+            ],
+            "sort": {
+                "column": "functionName",
+                "direction": "ascending"
+            },
+            "values": []
+        }
+    ]
+}
