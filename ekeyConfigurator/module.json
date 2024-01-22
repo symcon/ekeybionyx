@@ -1,10 +1,10 @@
 {
     "id": "{46E66F3B-494C-2075-46B9-EF21B113DAA4}",
-    "name": "eKey Configurator",
+    "name": "ekey Configurator",
     "type": 4,
-    "vendor": "eKey",
+    "vendor": "ekey",
     "aliases": [
-        "eKey bionyx Configurator"
+        "ekey bionyx Configurator"
     ],
     "parentRequirements": [
         "{419A845D-6534-1724-989C-948EB2366D38}"

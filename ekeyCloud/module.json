@@ -1,10 +1,10 @@
 {
     "id": "{12581FD4-FA80-AE58-7EF7-74733949B98B}",
-    "name": "eKey Cloud",
+    "name": "ekey Cloud",
     "type": 2,
-    "vendor": "eKey",
+    "vendor": "ekey",
     "aliases": [
-        "eKey bionyx Cloud"
+        "ekey bionyx Cloud"
     ],
     "parentRequirements": [],
     "childRequirements": [

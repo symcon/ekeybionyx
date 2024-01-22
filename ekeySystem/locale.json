@@ -1,0 +1,15 @@
+{
+    "translations": {
+        "de": {
+            "ID": "ID",
+            "Name": "Name",
+            "Information": "Informationen",
+            "Function WebHooks": "Funktionen WebHooks",
+            "Location": "Ort",
+            "Function": "Funktion",
+            "Function name, which will be shown in eKey Bionxy App": "Funktionsname, welcher in der ekey bionyx App angezeigt wird",
+            "Location name, which will be shown in eKey Bionxy App": "Ortsname, welcher in der ekey bionyx App angezeigt wird",
+            "Select action which will be associated with this webhook": "Wähle Aktion, welche mit diesem WebHook assoziiert wird"
+        }
+    }
+}

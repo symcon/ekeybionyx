@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-class eKeyConfigurator extends IPSModuleStrict
+class ekeyConfigurator extends IPSModuleStrict
 {
     public function Create(): void
     {
@@ -34,7 +34,7 @@ class eKeyConfigurator extends IPSModuleStrict
                 $data->actions[0]->values[] = [
                     'systemId'      => $system->systemId,
                     'systemName'    => $system->systemName,
-                    'info'          => sprintf("WebHooks: %d/%d", $system->functionWebhookQuotas->used, $system->functionWebhookQuotas->used + $system->functionWebhookQuotas->free),
+                    'info'          => sprintf('WebHooks: %d/%d', $system->functionWebhookQuotas->used, $system->functionWebhookQuotas->used + $system->functionWebhookQuotas->free),
                     'instanceID'    => $instanceID,
                     'create'        => [
                         'moduleID'      => '{81DE9D16-04F1-DE04-AC2D-77096E0A405A}',

@@ -1,0 +1,12 @@
+{
+    "translations": {
+        "de": {
+            "Systems": "Systeme",
+            "ID": "ID",
+            "Name": "Name",
+            "Information": "Informationen",
+            "ekey bionyx Configurator": "ekey bionyx Konfigurator",
+            "ekey Configurator": "ekey Konfigurator"
+        }
+    }
+}
