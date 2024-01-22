@@ -1,10 +1,10 @@
 {
     "id": "{81DE9D16-04F1-DE04-AC2D-77096E0A405A}",
-    "name": "eKey System",
+    "name": "ekey System",
     "type": 3,
-    "vendor": "eKey",
+    "vendor": "ekey",
     "aliases": [
-        "eKey bionyx System"
+        "ekey bionyx System"
     ],
     "parentRequirements": [
         "{419A845D-6534-1724-989C-948EB2366D38}"

@@ -6,7 +6,14 @@
             "Login": "Einloggen",
             "Please use your Somfy Account to log in!": "Bitte benutzen Sie Ihren Somfy Account zum Einloggen!",
             "Username": "Benutzername",
-            "Password": "Kennwort"
+            "Password": "Kennwort",
+            "Connection": "Verbindung",
+            "Local": "Lokal",
+            "Connect": "Verbinden",
+            "IP-Address": "IP-Adresse",
+            "Register": "Registrieren",
+            "Token": "Token",
+            "Token: Not registered yet": "Token: Noch nicht registriert"
         }
     }
 }
