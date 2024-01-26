@@ -70,7 +70,7 @@ class ekeyCloud extends IPSModuleStrict
         }
         $data->elements[0]->items[1]->visible = $this->ReadPropertyString('Connection') == 'local';
 
-        $data->actions[1]->caption = $this->ReadAttributeString('Token') ? 'Token: ' . substr($this->ReadAttributeString('Token'), 0, 16) . '...' : $this->Translate('Token: Not registered yet');
+        $data->elements[2]->caption = $this->ReadAttributeString('Token') ? 'Token: ' . substr($this->ReadAttributeString('Token'), 0, 16) . '...' : $this->Translate('Token: Not registered yet');
         return json_encode($data);
     }
 

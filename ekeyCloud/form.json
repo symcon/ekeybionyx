@@ -26,9 +26,7 @@
                     "options": []
                 }
             ]
-        }
-    ],
-    "actions": [
+        },
         {
             "type": "Button",
             "label": "Register",
