@@ -7,7 +7,8 @@
             "IP-Address": "IP-Adresse",
             "Register": "Registrieren",
             "Token": "Token",
-            "Token: Not registered yet": "Token: Noch nicht registriert"
+            "Token: Not registered yet": "Token: Noch nicht registriert",
+            "https://www.symcon.de/en/service/documentation/module-reference/ekeybionyx/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/"
         }
     }
 }

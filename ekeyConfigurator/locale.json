@@ -6,7 +6,8 @@
             "Name": "Name",
             "Information": "Informationen",
             "ekey bionyx Configurator": "ekey bionyx Konfigurator",
-            "ekey Configurator": "ekey Konfigurator"
+            "ekey Configurator": "ekey Konfigurator",
+            "https://www.symcon.de/en/service/documentation/module-reference/ekeybionyx/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/"
         }
     }
 }

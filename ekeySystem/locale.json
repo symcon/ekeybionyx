@@ -9,7 +9,8 @@
             "Function": "Funktion",
             "Function name, which will be shown in eKey Bionxy App": "Funktionsname, welcher in der ekey bionyx App angezeigt wird",
             "Location name, which will be shown in eKey Bionxy App": "Ortsname, welcher in der ekey bionyx App angezeigt wird",
-            "Select action which will be associated with this webhook": "Wähle Aktion, welche mit diesem WebHook assoziiert wird"
+            "Select action which will be associated with this webhook": "Wähle Aktion, welche mit diesem WebHook assoziiert wird",
+            "https://www.symcon.de/en/service/documentation/module-reference/ekeybionyx/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/"
         }
     }
 }
