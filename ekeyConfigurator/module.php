@@ -48,6 +48,7 @@ class ekeyConfigurator extends IPSModuleStrict
             foreach ($physicalChildren as $instanceID) {
                 $data->actions[0]->values[] = [
                     'systemId'     => IPS_GetProperty($instanceID, 'SystemId'),
+                    'systemName'   => '',
                     'name'         => IPS_GetName($instanceID),
                     'info'         => '',
                     'instanceID'   => $instanceID,
