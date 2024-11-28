@@ -9,19 +9,63 @@ class ekeySystem extends IPSModuleStrict
         parent::Create();
 
         $this->RegisterPropertyString('SystemId', '');
+        $this->RegisterPropertyString('NotificationMapping', '');
 
         $this->RegisterAttributeString('WebHooks', '{}');
+        $this->RegisterAttributeString('NotificationKey', $this->generateRandomString(32));
 
         //Connect to available splitter or create a new one
         $this->ConnectParent('{12581FD4-FA80-AE58-7EF7-74733949B98B}');
 
         //Register Hook for commands
         $this->RegisterHook('ekey_bionyx/' . $this->InstanceID);
+
+        //Register profiles for the Notification API
+        if (!IPS_VariableProfileExists('InputTypeValues.eKey')) {
+            IPS_CreateVariableProfile('InputTypeValues.eKey', VARIABLETYPE_INTEGER);
+            IPS_SetVariableProfileAssociation('InputTypeValues.eKey', 10, $this->Translate('Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('InputTypeValues.eKey', 20, $this->Translate('Digital Input'), '', -1);
+        }
+
+        if (!IPS_VariableProfileExists('ResultValues.eKey')) {
+            IPS_CreateVariableProfile('ResultValues.eKey', VARIABLETYPE_INTEGER);
+            IPS_SetVariableProfileAssociation('ResultValues.eKey', 0, $this->Translate('Unknown'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultValues.eKey', 10, $this->Translate('Match'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultValues.eKey', 20, $this->Translate('Filtered Match'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultValues.eKey', 30, $this->Translate('No Match'), '', -1);
+        }
+
+        if (!IPS_VariableProfileExists('ResultDetailValues.eKey')) {
+            IPS_CreateVariableProfile('ResultDetailValues.eKey', VARIABLETYPE_INTEGER);
+            IPS_SetVariableProfileAssociation('ResultDetailValues.eKey', 0, $this->Translate('Unknown'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultDetailValues.eKey', 10, $this->Translate('Input Disabled'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultDetailValues.eKey', 20, $this->Translate('Time Schedule'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultDetailValues.eKey', 30, $this->Translate('No Rule Found'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultDetailValues.eKey', 40, $this->Translate('No Input Found'), '', -1);
+            IPS_SetVariableProfileAssociation('ResultDetailValues.eKey', 50, $this->Translate('Invalid Input'), '', -1);
+        }
+
+        if (!IPS_VariableProfileExists('FingerIndex.eKey')) {
+            IPS_CreateVariableProfile('FingerIndex.eKey', VARIABLETYPE_INTEGER);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', -5, $this->Translate('Left Little Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', -4, $this->Translate('Left Ring Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', -3, $this->Translate('Left Middle Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', -2, $this->Translate('Left Index Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', -1, $this->Translate('Left Thumb'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', 0, $this->Translate('None'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', 1, $this->Translate('Right Thumb'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', 2, $this->Translate('Right Index Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', 3, $this->Translate('Right Middle Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', 4, $this->Translate('Right Ring Finger'), '', -1);
+            IPS_SetVariableProfileAssociation('FingerIndex.eKey', 5, $this->Translate('Right Little Finger'), '', -1);
+        }
+
     }
 
     public function GetConfigurationForm(): string
     {
         $data = json_decode(file_get_contents(__DIR__ . '/form.json'));
+        $data->elements[0]->items[1]->popup->items[1]->caption = $this->getHookURL($this->ReadAttributeString('NotificationKey'));
         if ($this->HasActiveParent()) {
             $data->actions[0]->values = $this->getFunctionWebHooks();
         }
@@ -92,6 +136,131 @@ class ekeySystem extends IPSModuleStrict
             return;
         }
 
+        if ($this->ReadAttributeString('NotificationKey') == $_GET['key']) {
+            $input = file_get_contents("php://input");
+            $this->SendDebug('Notification', print_r($input, true), 0);
+            if (!$input) {
+                echo "No data!";
+            }
+            else {
+                $index = 0;
+
+                $keyToName = function($key) {
+                    switch ($key) {
+                        case 'type':
+                            return $this->Translate('Input Type');
+                        case 'result':
+                            return $this->Translate('Result');
+                        case 'detail':
+                            return $this->Translate('Result Detail');
+                        case 'time':
+                            return $this->Translate('Date&Time');
+                        case 'ctlDevId':
+                            return $this->Translate('Executing Device');
+                        case 'acqDevId':
+                            return $this->Translate('Acquiring Device');
+                        case 'userId':
+                            return $this->Translate('User ID');
+                        case 'fingerIndex':
+                            return $this->Translate('Finger Index');
+                        default:
+                            return $key;
+                    }
+                };
+
+                $keyToProfile = function($key) {
+                    switch ($key) {
+                        case 'type':
+                            return 'InputTypeValues.eKey';
+                        case 'result':
+                            return 'ResultValues.eKey';
+                        case 'detail':
+                            return 'ResultDetailValues.eKey';
+                        case 'fingerIndex':
+                            return 'FingerIndex.eKey';
+                        default:
+                            return '';
+                    }
+                };
+
+                $userIdToName = function ($userId) {
+                    $mapping = $this->ReadPropertyString('NotificationMapping');
+                    if ($mapping) {
+                        $mapping = json_decode(base64_decode($mapping));
+                        if ($mapping) {
+                            if (isset($mapping->users)) {
+                                foreach ($mapping->users as $user) {
+                                    if (isset($user->userId) && isset($user->userName)) {
+                                        if ($user->userId == $userId) {
+                                            return $user->userName;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return $userId;
+                };
+
+                $deviceIdToName = function ($deviceId) {
+                    $mapping = $this->ReadPropertyString('NotificationMapping');
+                    if ($mapping) {
+                        $mapping = json_decode(base64_decode($mapping));
+                        if ($mapping) {
+                            if (isset($mapping->devices)) {
+                                foreach ($mapping->devices as $device) {
+                                    if (isset($device->deviceId) && isset($device->deviceName)) {
+                                        if ($device->deviceId == $deviceId) {
+                                            return $device->deviceName;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return $deviceId;
+                };
+
+                $processItem = function($key, $value, $prefix = '') use(&$index, $keyToName, $keyToProfile, $userIdToName, $deviceIdToName) {
+                    if (is_int($value)) {
+                        $this->RegisterVariableInteger($prefix . $key, $keyToName($key), $keyToProfile($key), $index);
+                        $this->SetValue($prefix . $key, $value);
+                    }
+                    else if (is_string($value)) {
+                        $this->RegisterVariableString($prefix . $key, $keyToName($key), $keyToProfile($key), $index);
+                        if ($key == 'userId') {
+                            $this->SetValue($prefix . $key, $userIdToName($value));
+                        }
+                        else if ($key == 'ctlDevId' || $key == 'acqDevId') {
+                            $this->SetValue($prefix . $key, $deviceIdToName($value));
+                        }
+                        else {
+                            $this->SetValue($prefix . $key, $value);
+                        }
+                    }
+                    $index++;
+                };
+
+                foreach (json_decode($input, true) as $key => $value) {
+                    if ($key == 'time' && is_string($value)) {
+                        $this->RegisterVariableInteger($key, $keyToName($key), '~UnixTimestamp', $index);
+                        $this->SetValue($key, strtotime($value));
+                        $index++;
+                    }
+                    else if ($key == 'params' && is_array($value)) {
+                        foreach ($value as $subkey => $subvalue) {
+                            $processItem($subkey, $subvalue, $key . '_');
+                        }
+                    }
+                    else {
+                        $processItem($key, $value);
+                    }
+                }
+
+                echo "OK";
+            }
+        }
+
         $webHooks = json_decode($this->ReadAttributeString('WebHooks'), true);
         foreach ($webHooks as $webHook) {
             if ($webHook['key'] === $_GET['key']) {
@@ -133,27 +302,27 @@ class ekeySystem extends IPSModuleStrict
         return $fwh;
     }
 
-    private function getCreatePayload($functionName, $locationName, $key): array
+    private function getHookURL($key): string
     {
         $connectionID = IPS_GetInstance($this->InstanceID)['ConnectionID'];
         $connection = IPS_GetProperty($connectionID, 'Connection');
         $ip = IPS_GetProperty($connectionID, 'IP');
-
-        $url = '';
         switch ($connection) {
             case 'local':
-                $url = sprintf('http://%s:3777/hook/ekey_bionyx/%d?key=%s', $ip, $this->InstanceID, $key);
-                break;
+                return sprintf('http://%s:3777/hook/ekey_bionyx/%d?key=%s', $ip, $this->InstanceID, $key);
             case 'connect':
                 $ccid = IPS_GetInstanceListByModuleID('{9486D575-BE8C-4ED8-B5B5-20930E26DE6F}')[0];
-                $url = sprintf('%s/hook/ekey_bionyx/%d?key=%s', CC_GetConnectURL($ccid), $this->InstanceID, $key);
-                break;
+                return sprintf('%s/hook/ekey_bionyx/%d?key=%s', CC_GetConnectURL($ccid), $this->InstanceID, $key);
         }
+        return '';
+    }
 
+    private function getCreatePayload($functionName, $locationName, $key): array
+    {
         return [
             'definition' => [
                 'method'                => 'Get',
-                'url'                   => $url,
+                'url'                   => $this->getHookURL($key),
                 'body'                  => null,
                 'securityLevel'         => 'TlsWithCACheck',
                 'timeout'               => null,

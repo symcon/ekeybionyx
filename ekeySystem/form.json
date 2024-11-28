@@ -1,9 +1,40 @@
 {
     "elements": [
         {
-            "type": "ValidationTextBox",
-            "name": "SystemId",
-            "caption": "ID"
+            "type": "RowLayout",
+            "items": [
+                {
+                    "type": "ValidationTextBox",
+                    "name": "SystemId",
+                    "caption": "ID"
+                },
+                {
+                    "type": "PopupButton",
+                    "caption": "Configure Notification API",
+                    "popup": {
+                        "caption": "Notification API",
+                        "items": [
+                            {
+                                "type": "Label",
+                                "caption": "Use this URL to configure the the Notification API"
+                            },
+                            {
+                                "type": "Label",
+                                "caption": ""
+                            },
+                            {
+                                "type": "Label",
+                                "caption": "Optionally supply the exported system mapping to map UserIDs to real names"
+                            },
+                            {
+                                "type": "SelectFile",
+                                "name": "NotificationMapping",
+                                "caption": "System Mapping"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     ],
     "actions": [
