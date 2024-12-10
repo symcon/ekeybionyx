@@ -137,7 +137,7 @@ class ekeySystem extends IPSModuleStrict
         }
 
         // eKey is appending some magic path, but not properly though only at the end -> /api/notification/finger
-        if ($this->ReadAttributeString('NotificationKey') == str_replace($_GET['key'], "/api/notification/finger", "")) {
+        if ($this->ReadAttributeString('NotificationKey') == str_replace("/api/notification/finger", "", $_GET['key'])) {
             $input = file_get_contents("php://input");
             $this->SendDebug('Notification', print_r($input, true), 0);
             if (!$input) {
