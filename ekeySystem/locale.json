@@ -10,7 +10,11 @@
             "Function name, which will be shown in eKey Bionxy App": "Funktionsname, welcher in der ekey bionyx App angezeigt wird",
             "Location name, which will be shown in eKey Bionxy App": "Ortsname, welcher in der ekey bionyx App angezeigt wird",
             "Select action which will be associated with this webhook": "Wähle Aktion, welche mit diesem WebHook assoziiert wird",
-            "https://www.symcon.de/en/service/documentation/module-reference/ekeybionyx/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/"
+            "https://www.symcon.de/en/service/documentation/module-reference/ekeybionyx/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/",
+            "Configure Notification API": "Notification API konfigurieren",
+            "Use this URL to configure the the Notification API": "Bitte diese URL zur Einrichtung der Notification API verwenden",
+            "System Mapping": "Systemzuordnung",
+            "Optionally supply the exported system mapping to map UserIDs to real names": "Geben Sie optional die exportierte Systemzuordnung an, um die UserIDs echten Namen zuzuordnen"
         }
     }
 }
