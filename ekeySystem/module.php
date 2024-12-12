@@ -239,6 +239,14 @@ class ekeySystem extends IPSModuleStrict
                             $this->SetValue($prefix . $key, $value);
                         }
                     }
+                    else if (is_null($value)) {
+                        if ($key == 'userId') {
+                            $this->SetValue($prefix . $key, '');
+                        }
+                        else if ($key == 'fingerIndex') {
+                            $this->SetValue($prefix . $key, 0);
+                        }
+                    }
                     $index++;
                 };
 
