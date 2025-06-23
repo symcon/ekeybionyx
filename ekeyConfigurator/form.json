@@ -5,7 +5,7 @@
             "name": "Configurator",
             "discoveryInterval": 300,
             "caption": "Systems",
-            "delete": false,
+            "delete": true,
             "columns": [
                 {
                     "label": "ID",
