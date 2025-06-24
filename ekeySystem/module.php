@@ -66,7 +66,7 @@ class ekeySystem extends IPSModuleStrict
     {
         $data = json_decode(file_get_contents(__DIR__ . '/form.json'));
         $data->elements[0]->items[1]->popup->items[1]->caption = $this->getHookURL($this->ReadAttributeString('NotificationKey'));
-        if ($this->HasActiveParent()) {
+        if ($this->HasActiveParent() && $this->ReadPropertyString('SystemId')) {
             $data->actions[0]->values = $this->getFunctionWebHooks();
         }
         return json_encode($data);
