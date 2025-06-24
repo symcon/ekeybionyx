@@ -136,8 +136,13 @@ class ekeySystem extends IPSModuleStrict
             return;
         }
 
-        // eKey is appending some magic path, but not properly though only at the end -> /api/notification/finger
-        if ($this->ReadAttributeString('NotificationKey') == str_replace("/api/notification/finger", "", $_GET['key'])) {
+        // eKey is appending some magic path, but not properly though only at the end
+        // -> /api/notification/finger
+        // -> /api/notification/input
+        $fixedKey = $_GET['key'];
+        $fixedKey = str_replace('/api/notification/finger', '', $fixedKey);
+        $fixedKey = str_replace('/api/notification/input', '', $fixedKey);
+        if ($this->ReadAttributeString('NotificationKey') == $fixedKey) {
             $input = file_get_contents("php://input");
             $this->SendDebug('Notification', print_r($input, true), 0);
             if (!$input) {
@@ -164,6 +169,10 @@ class ekeySystem extends IPSModuleStrict
                             return $this->Translate('User ID');
                         case 'fingerIndex':
                             return $this->Translate('Finger Index');
+                        case 'inputIndex':
+                            return $this->Translate('Input Index');
+                        case 'trigger':
+                            return $this->Translate('Trigger');
                         default:
                             return $key;
                     }

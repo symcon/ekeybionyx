@@ -269,6 +269,61 @@
 				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 			},
 			"response": []
+		},
+		{
+			"name": "Post data 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": 20,\n  \"result\": 20,\n  \"detail\": 10,\n  \"time\": \"2024-05-06T09:16:43Z\",\n  \"ctlDevId\": \"4500080101000035\",\n  \"acqDevId\": \"4500080101000035\",\n  \"params\": {\n    \"inputNumber\": 1,\n    \"trigger\": \"posedge\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://172.20.53.124:3777/hook/ekey_bionyx/54027?key=SibtTgsjLXvzPFHRL1QgQHdX8AtJFmxc",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"53",
+						"124"
+					],
+					"port": "3777",
+					"path": [
+						"hook",
+						"ekey_bionyx",
+						"54027"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "SibtTgsjLXvzPFHRL1QgQHdX8AtJFmxc"
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
 		}
 	],
 	"event": [
