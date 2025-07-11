@@ -30,6 +30,82 @@
                                 "type": "SelectFile",
                                 "name": "NotificationMapping",
                                 "caption": "System Mapping"
+                            },        {
+                                "type": "ExpansionPanel",
+                                "caption": "Configure Access Protocol",
+                                "items": [
+                                    {
+                                        "type": "Label",
+                                        "caption": "When enabled, a new Access Protocol variable is created that will contain all events from the eKey system. Using the options below, a selection of information may be enabled to specify what information should be logged. Activating the archive logging for this variable is highly recommended"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "EnableAccessProtocol",
+                                        "caption": "Access Protocol"
+                                    },
+                                    {
+                                        "type": "Label",
+                                        "caption": "Disable options to reduce the amount of information logged in the Access Protocol variable"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogDateTime",
+                                        "caption": "Log Date&Time"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogInputType",
+                                        "caption": "Log Input Type"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogResult",
+                                        "caption": "Log Result"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogResultDetail",
+                                        "caption": "Log Result Detail"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogExecutingDevice",
+                                        "caption": "Log Executing Device"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogAcquiringDevice",
+                                        "caption": "Log Acquiring Device"
+                                    },
+                                    {
+                                        "type": "Label",
+                                        "caption": "The following options are relevant for finger print readings"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogParamsUserID",
+                                        "caption": "Log UserID (or User if System Mapping is configured)"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogParamsFingerIndex",
+                                        "caption": "Log Finger Index"
+                                    },
+                                    {
+                                        "type": "Label",
+                                        "caption": "The following options are relevant for input based triggers"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogParamsInputNumber",
+                                        "caption": "Log Input Number"
+                                    },
+                                    {
+                                        "type": "CheckBox",
+                                        "name": "LogParamsTrigger",
+                                        "caption": "Log Trigger"
+                                    }
+                                ]
                             }
                         ]
                     }

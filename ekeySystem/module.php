@@ -11,6 +11,19 @@ class ekeySystem extends IPSModuleStrict
         $this->RegisterPropertyString('SystemId', '');
         $this->RegisterPropertyString('NotificationMapping', '');
 
+        // Access Protocol
+        $this->RegisterPropertyBoolean('EnableAccessProtocol', true);
+        $this->RegisterPropertyBoolean('LogDateTime', true);
+        $this->RegisterPropertyBoolean('LogInputType', true);
+        $this->RegisterPropertyBoolean('LogResult', true);
+        $this->RegisterPropertyBoolean('LogResultDetail', true);
+        $this->RegisterPropertyBoolean('LogExecutingDevice', true);
+        $this->RegisterPropertyBoolean('LogAcquiringDevice', true);
+        $this->RegisterPropertyBoolean('LogParamsUserID', true);
+        $this->RegisterPropertyBoolean('LogParamsFingerIndex', true);
+        $this->RegisterPropertyBoolean('LogParamsInputNumber', true);
+        $this->RegisterPropertyBoolean('LogParamsTrigger', true);
+
         $this->RegisterAttributeString('WebHooks', '{}');
         $this->RegisterAttributeString('NotificationKey', $this->generateRandomString(32));
 
@@ -273,6 +286,52 @@ class ekeySystem extends IPSModuleStrict
                     else {
                         $processItem($key, $value);
                     }
+                }
+
+                // Access Protocol
+                if ($this->ReadPropertyBoolean('EnableAccessProtocol')) {
+                    $this->RegisterVariableString('AccessProtocol', $this->Translate('Access Protocol'), '', 50);
+                    $parts = [];
+                    $append = function($ident) use(&$parts) {
+                        $id = IPS_FindObjectIDByIdent($ident, $this->InstanceID);
+                        if ($id > 1) {
+                            $parts[] = GetValueFormatted($id);
+                        }
+                    };
+                    if ($this->ReadPropertyBoolean('LogDateTime')) {
+                        $append('time');
+                    }
+                    if ($this->ReadPropertyBoolean('LogInputType')) {
+                        $append('type');
+                    }
+                    if ($this->ReadPropertyBoolean('LogResult')) {
+                        $append('result');
+                    }
+                    if ($this->ReadPropertyBoolean('LogResultDetail')) {
+                        $append('detail');
+                    }
+                    if ($this->ReadPropertyBoolean('LogExecutingDevice')) {
+                        $append('ctlDevId');
+                    }
+                    if ($this->ReadPropertyBoolean('LogAcquiringDevice')) {
+                        $append('acqDevId');
+                    }
+                    if ($this->ReadPropertyBoolean('LogParamsUserID')) {
+                        $append('params_userId');
+                    }
+                    if ($this->ReadPropertyBoolean('LogParamsFingerIndex')) {
+                        $append('params_fingerIndex');
+                    }
+                    if ($this->ReadPropertyBoolean('LogParamsInputNumber')) {
+                        $append('params_inputNumber');
+                    }
+                    if ($this->ReadPropertyBoolean('LogParamsTrigger')) {
+                        $append('params_trigger');
+                    }
+                    $this->SetValue('AccessProtocol', implode(", ", $parts));
+                }
+                else {
+                    $this->UnregisterVariable('AccessProtocol');
                 }
 
                 echo "OK";

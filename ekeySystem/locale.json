@@ -2,19 +2,33 @@
     "translations": {
         "de": {
             "ID": "ID",
-            "Name": "Name",
-            "Information": "Informationen",
+            "Configure Notification API": "Notification API konfigurieren",
+            "Notification API": "Notification API",
+            "Use this URL to configure the the Notification API": "Bitte diese URL zur Einrichtung der Notification API verwenden",
+            "Optionally supply the exported system mapping to map UserIDs to real names": "Geben Sie optional die exportierte Systemzuordnung an, um die UserIDs echten Namen zuzuordnen",
+            "System Mapping": "Systemzuordnung",
+            "Configure Access Protocol": "Zugriffsprotokoll konfigurieren",
+            "When enabled, a new Access Protocol variable is created that will contain all events from the eKey system. Using the options below, a selection of information may be enabled to specify what information should be logged. Activating the archive logging for this variable is highly recommended": "Wenn aktiviert, wird eine neue Zugriffsprotokoll-Variable erstellt, die alle Ereignisse des eKey-Systems enthält. Mit den folgenden Optionen kann ausgewählt werden, welche Informationen protokolliert werden sollen. Die Aktivierung der Archivprotokollierung für diese Variable wird dringend empfohlen.",
+            "Access Protocol": "Zugriffsprotokoll",
+            "Disable options to reduce the amount of information logged in the Access Protocol variable": "Deaktivieren Sie Optionen, um die Menge der im Zugriffsprotokoll protokollierten Informationen zu reduzieren.",
+            "Log Date&Time": "Datum & Uhrzeit protokollieren",
+            "Log Input Type": "Eingabetyp protokollieren",
+            "Log Result": "Ergebnis protokollieren",
+            "Log Result Detail": "Ergebnisdetails protokollieren",
+            "Log Executing Device": "Ausführendes Gerät protokollieren",
+            "Log Acquiring Device": "Erfassendes Gerät protokollieren",
+            "The following options are relevant for finger print readings": "Die folgenden Optionen sind für Fingerabdruck-Lesungen relevant.",
+            "Log UserID (or User if System Mapping is configured)": "UserID protokollieren (oder Benutzer, wenn Systemzuordnung konfiguriert ist)",
+            "Log Finger Index": "Fingerindex protokollieren",
+            "The following options are relevant for input based triggers": "Die folgenden Optionen sind für eingabebasierte Auslöser relevant.",
+            "Log Input Number": "Eingabenummer protokollieren",
+            "Log Trigger": "Auslöser protokollieren",
             "Function WebHooks": "Funktionen WebHooks",
-            "Location": "Ort",
             "Function": "Funktion",
+            "Location": "Ort",
             "Function name, which will be shown in eKey Bionxy App": "Funktionsname, welcher in der ekey bionyx App angezeigt wird",
             "Location name, which will be shown in eKey Bionxy App": "Ortsname, welcher in der ekey bionyx App angezeigt wird",
-            "Select action which will be associated with this webhook": "Wähle Aktion, welche mit diesem WebHook assoziiert wird",
-            "https://www.symcon.de/en/service/documentation/module-reference/ekeybionyx/": "https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/",
-            "Configure Notification API": "Notification API konfigurieren",
-            "Use this URL to configure the the Notification API": "Bitte diese URL zur Einrichtung der Notification API verwenden",
-            "System Mapping": "Systemzuordnung",
-            "Optionally supply the exported system mapping to map UserIDs to real names": "Geben Sie optional die exportierte Systemzuordnung an, um die UserIDs echten Namen zuzuordnen"
+            "Select action which will be associated with this webhook": "Wähle Aktion, welche mit diesem WebHook assoziiert wird"
         }
     }
 }
