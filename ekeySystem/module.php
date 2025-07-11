@@ -182,8 +182,8 @@ class ekeySystem extends IPSModuleStrict
                             return $this->Translate('User ID');
                         case 'fingerIndex':
                             return $this->Translate('Finger Index');
-                        case 'inputIndex':
-                            return $this->Translate('Input Index');
+                        case 'inputNumber':
+                            return $this->Translate('Input Number');
                         case 'trigger':
                             return $this->Translate('Trigger');
                         default:
