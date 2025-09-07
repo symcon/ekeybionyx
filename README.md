@@ -6,11 +6,11 @@
 
 Folgende Module beinhaltet das ekeybionyx Repository:
 
-- __ekeyCloud__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx))  
+- __ekeyCloud__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/))  
     Die Schnittstelle zwischen IP-Symcon und ekeybionyx.
 
-- __ekeyConfigurator__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx))  
+- __ekeyConfigurator__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/))  
     Der Konfigurator richtet ekey Bionyx System in IP-Symcon ein.
 
-- __ekeySystem__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx))  
+- __ekeySystem__ ([Dokumentation](https://www.symcon.de/de/service/dokumentation/modulreferenz/ekeybionyx/))  
     Dieses Modul repräsentiert ein ekey Bionyx System in IP-Symcon.
