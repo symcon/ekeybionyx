@@ -27,9 +27,6 @@ class ekeySystem extends IPSModuleStrict
         $this->RegisterAttributeString('WebHooks', '{}');
         $this->RegisterAttributeString('NotificationKey', $this->generateRandomString(32));
 
-        //Connect to available splitter or create a new one
-        $this->ConnectParent('{12581FD4-FA80-AE58-7EF7-74733949B98B}');
-
         //Register Hook for commands
         $this->RegisterHook('ekey_bionyx/' . $this->InstanceID);
 

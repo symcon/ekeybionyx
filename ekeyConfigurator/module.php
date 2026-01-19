@@ -7,9 +7,6 @@ class ekeyConfigurator extends IPSModuleStrict
     {
         //Never delete this line!
         parent::Create();
-
-        //Connect to available splitter or create a new one
-        $this->ConnectParent('{12581FD4-FA80-AE58-7EF7-74733949B98B}');
     }
 
     public function GetConfigurationForm(): string
