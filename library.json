@@ -4,9 +4,9 @@
     "name": "ekey bionyx",
     "url": "https://www.symcon.de",
     "compatibility": {
-        "version": "7.0"
+        "version": "9.0"
     },
-    "version": "3.2",
+    "version": "3.3",
     "build": 0,
     "date": 0
 }
